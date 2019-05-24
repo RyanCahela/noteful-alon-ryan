@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 
 function FolderNav(props) {
   let folders = props.folders.map((folder) => {
-    return <NavLink 
-            to={`/folder/${folder.id}`} 
-            key={folder.id}
-            activeClassName='highlight'>
-            <li className='folder' key={folder.id}>{folder.name}</li>
-          </NavLink>
+    return <NavLink
+      to={`/folders/${folder.folder_id}`}
+      key={folder.folder_id}
+      activeClassName='highlight'>
+      <li className='folder' key={folder.folder_id}>{folder.folder_title}</li>
+    </NavLink>
   });
 
   return (

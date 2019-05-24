@@ -18,9 +18,9 @@ class App extends Component {
           <BrowserRouter>
             <Header />
             <Switch>
-              <Route exact path="/" component={MainPage}/>
-              <Route path="/folder/:folderId" component={FolderPage}/>
-              <Route path="/note/:noteId" component={NotePage}/>
+              <Route exact path="/" component={MainPage} />
+              <Route path="/folders/:folderId" component={FolderPage} />
+              <Route path="/notes/:noteId" component={NotePage} />
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>

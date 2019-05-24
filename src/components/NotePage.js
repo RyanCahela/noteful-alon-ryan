@@ -7,29 +7,29 @@ import { MyContext } from '../AppContext';
 function NotePage(props) {
   console.log(props);
 
-  let { noteId } = props.match.params; 
+  let { noteId } = props.match.params;
 
   return (
     <MyContext.Consumer>
-    {(context) => {
+      {(context) => {
 
-      let note = context.notes.find((note) => {
-        return note.id === noteId
-      })
+        let note = context.notes.find((note) => {
+          return note.note_id === noteId
+        })
 
-      return (
-        <div className="container">
-          <nav className="sidebar">
-            <Link to={`/folder/${note.folderId}`}
-            className="sidebar-go-back">Go Back</Link>
-          </nav>
-          <main className="main">
-            <Note note={note}/>
-          </main>
-        </div>
-      )
-    }}
-  </MyContext.Consumer>
+        return (
+          <div className="container">
+            <nav className="sidebar">
+              <Link to={`/folder/${note.folderId}`}
+                className="sidebar-go-back">Go Back</Link>
+            </nav>
+            <main className="main">
+              <Note note={note} />
+            </main>
+          </div>
+        )
+      }}
+    </MyContext.Consumer>
   );
 }
 

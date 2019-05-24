@@ -8,27 +8,28 @@ function List(props) {
   let notes;
 
   //Filter if folderId provided
-  if(props.folderId) {
+  if (props.folderId) {
     notes = props.notes.filter((note) => {
-      return note.folderId === props.folderId
+      return note.folder_id === props.folderId
     })
   } else {
     notes = props.notes
   }
-  
+  console.log(notes);
+
   return (
-      <>
-      <AddNote folders={props.folders}/>
+    <>
+      <AddNote folders={props.folders} />
       <ul className="notes-list">
         {notes.map((note) => {
           return (
-            <ListNoteErrorBoundary key={note.id}>
+            <ListNoteErrorBoundary key={note.note_id}>
               <ListNote note={note} />
             </ListNoteErrorBoundary>
           )
         })}
       </ul>
-      </>
+    </>
   );
 }
 

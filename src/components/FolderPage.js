@@ -5,15 +5,16 @@ import { MyContext } from '../AppContext';
 
 function FolderPage(props) {
 
-  const { folderId } = props.match.params;
+  const folderId = props.match.params.folderId;
   return (
     <MyContext.Consumer>
-      {(context)=> {
+      {(context) => {
+        console.log(context);
         return (
           <div className="container">
             <FolderNav folders={context.folders} selectedFolderId={folderId} />
             <main className="main">
-              <List notes={context.notes} folderId={folderId} folders={context.folders}/>
+              <List notes={context.notes} folderId={folderId} folders={context.folders} />
             </main>
           </div>
         )
