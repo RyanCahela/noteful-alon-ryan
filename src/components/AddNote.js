@@ -11,7 +11,7 @@ export default class AddNote extends React.Component {
         folderName: '',
         hasError: false,
         errorMessage: '',
-        folderId: 'b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1'
+        folderId: '1'
     }
 
     updateName(noteName) {
@@ -48,19 +48,17 @@ export default class AddNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        e.target.reset();
         this.validateNoteName(this.state.noteName, ()=> {
             if(!this.state.hasError) {
                 let newNote ={
-                    id: UUID(),
-                    name: this.state.noteName,
-                    modified: new Date().toDateString(),
-                    folderId: this.state.folderId,
-                    content: this.state.content
+                    note_name: this.state.noteName,
+                    folder_id: this.state.folderId,
+                    note_content: this.state.content
                 }
                 this.context.addNote(newNote);
                 this.setState({
-                    noteName: ''
+                    noteName: '',
+                    content: ''
                 })
                 return;
             } else {
@@ -77,14 +75,18 @@ export default class AddNote extends React.Component {
         return (
             <form onSubmit={(e) => this.handleSubmit(e)}>
                 <label htmlFor="addNoteName">Note Name</label>
-                <input type="text" onChange={(e) => this.updateName(e.target.value)} />
+                <input type="text" value={this.state.noteName}onChange={(e) => this.updateName(e.target.value)} />
                 <label htmlFor="addNoteContent">Content</label>
-                <input type="text" onChange={(e) => this.updateContent(e.target.value)} />
+                <input type="text" value={this.state.content} onChange={(e) => this.updateContent(e.target.value)} />
                 <label htmlFor="addNoteFolder">Folder Name</label>
                 <select onChange={(e) => this.updateFolderId(e.target.value)}>
                     {this.props.folders.map(folder => {
+                        let selected = false;
+                        if(folder.folder_id === Number(this.state.folderId)) {
+                          selected = true;
+                        }
                         return (
-                            <option key={folder.id} value={folder.id}>{folder.name}</option>
+                            <option key={folder.folder_id} value={folder.folder_id} selected={selected}>{folder.folder_title}</option>
                         )
                     })}
                 </select>

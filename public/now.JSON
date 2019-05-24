@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "ryancahela-noteful-app-alon-ryan",
+    "name": "noteful-alon-ryan",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+}

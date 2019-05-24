@@ -10,12 +10,11 @@ function List(props) {
   //Filter if folderId provided
   if (props.folderId) {
     notes = props.notes.filter((note) => {
-      return note.folder_id === props.folderId
+      return note.folder_id === Number(props.folderId);
     })
   } else {
     notes = props.notes
   }
-  console.log(notes);
 
   return (
     <>

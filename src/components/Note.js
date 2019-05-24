@@ -8,17 +8,16 @@ export default function Note(props) {
     <>
     <ul className="notes-list">
       <li className="note">
-        <h2 className="note-heading">{props.note.name}</h2>
-        <p className="note-paragraph">{props.note.modified}</p>
+        <h2 className="note-heading">{props.note.note_name}</h2>
       </li>
     </ul>
     <p>
-      {props.note.content}
+      {props.note.note_content}
     </p>
     <MyContext.Consumer>
       {(context) => {
         return (
-            <button onClick={() => context.deleteNote(props.note.id)}>
+            <button onClick={() => context.deleteNote(props.note.note_id)}>
               <Link to="/">Delete</Link>
             </button>
         )

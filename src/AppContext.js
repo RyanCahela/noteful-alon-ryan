@@ -28,6 +28,9 @@ class AppContext extends Component {
 
 
     deleteNote = (noteId) => {
+        fetch(`http://localhost:7000/api/notes/${noteId}`, {
+          method: 'DELETE'
+        })
         let newNotes = this.state.notes.filter((note) => {
             return note.note_id !== noteId;
         })
@@ -37,30 +40,35 @@ class AppContext extends Component {
     }
 
     addNote = (newNote) => {
-        fetch('http://localhost:7000/notes', {
+        fetch('http://localhost:7000/api/notes', {
             method: 'POST',
             body: JSON.stringify(newNote),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => {
-                console.log(res);
-                if (res.status === 201) {
-                    let newNotes = this.state.notes;
-                    newNotes.unshift(newNote);
-                    this.setState({
-                        notes: newNotes
-                    });
-                    return res;
-                }
-                throw new Error('POST failed for some reason')
-            })
-            .catch(error => console.error('Error:', error))
+        .then(res => {
+          if(res.status === 201) {
+            return res.json();
+          }
+          else {
+            throw new Error('POST failed for some reason')
+          }
+        })
+        .then(resJson => {
+            console.log(resJson);
+            let newNotes = this.state.notes;
+            newNotes.unshift(resJson);
+            this.setState({
+                notes: newNotes
+            });
+        })
+        .catch(error => console.error('Error:', error))
     }
 
     addFolder = (newFolder) => {
-        fetch('http://localhost:7000/folders', {
+        console.log(newFolder);
+        fetch('http://localhost:7000/api/folders', {
             method: 'POST',
             body: JSON.stringify(newFolder),
             headers: {

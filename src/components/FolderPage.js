@@ -9,7 +9,6 @@ function FolderPage(props) {
   return (
     <MyContext.Consumer>
       {(context) => {
-        console.log(context);
         return (
           <div className="container">
             <FolderNav folders={context.folders} selectedFolderId={folderId} />

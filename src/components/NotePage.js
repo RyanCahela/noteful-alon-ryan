@@ -14,13 +14,13 @@ function NotePage(props) {
       {(context) => {
 
         let note = context.notes.find((note) => {
-          return note.note_id === noteId
+          return note.note_id === Number(noteId);
         })
 
         return (
           <div className="container">
             <nav className="sidebar">
-              <Link to={`/folder/${note.folderId}`}
+              <Link to={`/folders/${note.folder_id}`}
                 className="sidebar-go-back">Go Back</Link>
             </nav>
             <main className="main">
