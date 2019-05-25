@@ -1,5 +1,4 @@
 import React from 'react';
-import UUID from 'uuid/v4';
 import { MyContext } from '../AppContext';
 import PropTypes from 'prop-types';
 
