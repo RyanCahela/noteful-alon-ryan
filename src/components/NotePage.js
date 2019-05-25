@@ -8,13 +8,16 @@ function NotePage(props) {
   console.log(props);
 
   let { noteId } = props.match.params;
+  noteId = Number(noteId);
 
   return (
     <MyContext.Consumer>
       {(context) => {
-
+        console.log(context);
         let note = context.notes.find((note) => {
-          return note.note_id === Number(noteId);
+          console.log('note_id',note.note_id);
+          console.log('noteID', noteId);
+          return note.note_id === noteId;
         })
 
         return (

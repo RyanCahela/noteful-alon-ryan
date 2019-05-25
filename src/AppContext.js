@@ -25,17 +25,17 @@ class AppContext extends Component {
             .catch(err => new Error(err));
     }
 
-
-
     deleteNote = (noteId) => {
         fetch(`http://localhost:7000/api/notes/${noteId}`, {
           method: 'DELETE'
         })
-        let newNotes = this.state.notes.filter((note) => {
+        .then(res => {
+          let newNotes = this.state.notes.filter((note) => {
             return note.note_id !== noteId;
-        })
-        this.setState({
-            notes: newNotes
+          });
+          this.setState({
+              notes: newNotes
+          });
         });
     }
 
@@ -89,7 +89,6 @@ class AppContext extends Component {
             })
             .catch(error => console.error('Error:', error))
     }
-
 
     render() {
         return (

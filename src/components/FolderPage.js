@@ -5,7 +5,8 @@ import { MyContext } from '../AppContext';
 
 function FolderPage(props) {
 
-  const folderId = props.match.params.folderId;
+  const folderId = Number(props.match.params.folderId);
+  
   return (
     <MyContext.Consumer>
       {(context) => {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import UUID from 'uuid/v4';
 import { MyContext } from '../AppContext';
 
 export default class AddFolder extends Component {
