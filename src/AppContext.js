@@ -56,7 +56,6 @@ class AppContext extends Component {
           }
         })
         .then(resJson => {
-            console.log(resJson);
             let newNotes = this.state.notes;
             newNotes.unshift(resJson);
             this.setState({
@@ -67,7 +66,6 @@ class AppContext extends Component {
     }
 
     addFolder = (newFolder) => {
-        console.log(newFolder);
         fetch('https://thawing-badlands-32722.herokuapp.com/api/folders', {
             method: 'POST',
             body: JSON.stringify(newFolder),
@@ -76,7 +74,6 @@ class AppContext extends Component {
             }
         })
             .then(res => {
-                console.log(res);
                 if (res.status === 201) {
                     let newFolderList = this.state.folders;
                     newFolderList.push(newFolder);
@@ -91,7 +88,6 @@ class AppContext extends Component {
     }
 
     deleteFolder = (folderId) => {
-      console.log(folderId);
       fetch(`https://thawing-badlands-32722.herokuapp.com/api/folders/${folderId}`, {
         method: 'DELETE',
       })
