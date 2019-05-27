@@ -10,14 +10,14 @@ class AppContext extends Component {
     };
 
     componentDidMount() {
-        fetch('http://localhost:7000/api/folders')
+        fetch('https://thawing-badlands-32722.herokuapp.com/api/folders')
             .then(res => res.json())
             .then(resJson => this.setState(() => {
                 return { folders: resJson }
             }))
             .catch(err => new Error(err));
 
-        fetch('http://localhost:7000/api/notes')
+        fetch('https://thawing-badlands-32722.herokuapp.com/api/notes')
             .then(res => res.json())
             .then(resJson => this.setState(() => {
                 return { notes: resJson }
@@ -26,7 +26,7 @@ class AppContext extends Component {
     }
 
     deleteNote = (noteId) => {
-        fetch(`http://localhost:7000/api/notes/${noteId}`, {
+        fetch(`https://thawing-badlands-32722.herokuapp.com/api/notes/${noteId}`, {
           method: 'DELETE'
         })
         .then(res => {
@@ -40,7 +40,7 @@ class AppContext extends Component {
     }
 
     addNote = (newNote) => {
-        fetch('http://localhost:7000/api/notes', {
+        fetch('https://thawing-badlands-32722.herokuapp.com/api/notes', {
             method: 'POST',
             body: JSON.stringify(newNote),
             headers: {
@@ -68,7 +68,7 @@ class AppContext extends Component {
 
     addFolder = (newFolder) => {
         console.log(newFolder);
-        fetch('http://localhost:7000/api/folders', {
+        fetch('https://thawing-badlands-32722.herokuapp.com/api/folders', {
             method: 'POST',
             body: JSON.stringify(newFolder),
             headers: {
@@ -92,7 +92,7 @@ class AppContext extends Component {
 
     deleteFolder = (folderId) => {
       console.log(folderId);
-      fetch(`http://localhost:7000/api/folders/${folderId}`, {
+      fetch(`https://thawing-badlands-32722.herokuapp.com/api/folders/${folderId}`, {
         method: 'DELETE',
       })
       .then(res => {
