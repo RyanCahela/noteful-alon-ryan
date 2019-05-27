@@ -9,7 +9,10 @@ function FolderNav(props) {
       to={`/folders/${folder.folder_id}`}
       key={folder.folder_id}
       activeClassName='highlight'>
-      <li className='folder' key={folder.folder_id}>{folder.folder_title}</li>
+      <li className='folder' key={folder.folder_id}>
+        {folder.folder_title}
+        <button onClick={() => props.deleteFolder(folder.folder_id)}>Delete</button>
+        </li>
     </NavLink>
   });
 

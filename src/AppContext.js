@@ -90,6 +90,23 @@ class AppContext extends Component {
             .catch(error => console.error('Error:', error))
     }
 
+    deleteFolder = (folderId) => {
+      console.log(folderId);
+      fetch(`http://localhost:7000/api/folders/${folderId}`, {
+        method: 'DELETE',
+      })
+      .then(res => {
+        this.setState((currentState) => {
+          let newFoldersList = currentState.folders.filter((folder) => {
+            return folder.folder_id !== folderId;
+          });
+          return {
+            folders: newFoldersList
+          }
+        });
+      })
+    }
+
     render() {
         return (
             <MyContext.Provider value={{
@@ -98,6 +115,7 @@ class AppContext extends Component {
                 deleteNote: this.deleteNote,
                 addNote: this.addNote,
                 addFolder: this.addFolder,
+                deleteFolder: this.deleteFolder
             }}>
                 {this.props.children}
             </MyContext.Provider>

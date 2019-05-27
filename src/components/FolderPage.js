@@ -10,9 +10,10 @@ function FolderPage(props) {
   return (
     <MyContext.Consumer>
       {(context) => {
+        console.log(context);
         return (
           <div className="container">
-            <FolderNav folders={context.folders} selectedFolderId={folderId} />
+            <FolderNav folders={context.folders} selectedFolderId={folderId} deleteFolder={context.deleteFolder} />
             <main className="main">
               <List notes={context.notes} folderId={folderId} folders={context.folders} />
             </main>

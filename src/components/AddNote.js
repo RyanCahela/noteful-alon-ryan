@@ -49,7 +49,7 @@ export default class AddNote extends React.Component {
         e.preventDefault();
         this.validateNoteName(this.state.noteName, ()=> {
             if(!this.state.hasError) {
-                let newNote ={
+                let newNote = {
                     note_name: this.state.noteName,
                     folder_id: this.state.folderId,
                     note_content: this.state.content
