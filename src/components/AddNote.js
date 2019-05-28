@@ -24,7 +24,6 @@ export default class AddNote extends React.Component {
             this.setState({hasError: false},() => {
                 callback();
             });
-            console.log('name longer than 0');
         } else {
             this.setState({
                 hasError: true,
