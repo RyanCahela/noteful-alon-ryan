@@ -29,6 +29,9 @@ export default class AddFolder extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        if(!this.state.folderName) {
+          return;
+        }
         let newFolder = {
             id: UUID(),
             name: this.state.folderName
